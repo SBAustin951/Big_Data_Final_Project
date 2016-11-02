@@ -1,0 +1,18 @@
+#cname {
+  color: white;
+  font-size: 3em;
+  margin-top: .06em;
+}
+
+#search {
+  margin-top: 1em;
+}
+
+#results {
+  margin-top: 6em;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
