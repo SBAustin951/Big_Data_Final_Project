@@ -15,11 +15,15 @@
 <head>
   <title>My Website</title>
   <link href="css/style.css" rel="stylesheet" />
+
   <!-- import bootsrap -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script href="js/bootstrap.min.js"></script>
+
+  <!-- import gmaps -->
+  <script type="text/javascript" src="js/gmaps.js"></script>
 </head>
 <body>
   <div class="row">
@@ -39,7 +43,7 @@
   <div class="row">
     <div class="container-fluid">
       <div class="col-md-6" id="results">
-        <?php
+<?php
           if (!empty($_GET['key']) && !empty($_GET['city'])) {
             $keyWord = $_GET['key'];
             $cityName = $_GET['city'];
@@ -47,12 +51,31 @@
             $result = $db->business->find($query)->sort(array('stars' => 1));
 
             foreach ($result as $r) {
-              echo "<div class='panel panel-default' id='table'>";
-              echo "<table class='table table-bordered'>";
-              echo "<thead class='thead-inverse'><tr><th colspan='2'>".$r['name']."</th></tr></thead>";
-              echo "<tbody><tr><td>Business Address</td><td><br/><strong>".$r['full_address']."</strong></td></tr>";
-              echo "<tr><td align='justify'>Star Rating</td><td><br/><strong>".$r['stars']."</strong></td></tr>";
-              echo "</tbody></table></div>";
+?>
+              <div class='panel panel-default'>
+                <table class='table table-bordered'>
+                  <thead class='thead-inverse'>
+                      <tr>
+                        <th colspan='2'><?php echo $r['name'] ?></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Business Address</td>
+                        <td><br/>
+                          <strong><?php echo $r['full_address'] ?></strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align='justify'>Star Rating</td>
+                        <td><br/>
+                          <strong><?php echo $r['stars'] ?></strong>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+<?php
             }
           } else if (!empty($_GET['key'])) {
             $keyWord = $_GET['key'];
@@ -60,12 +83,31 @@
             $result = $db->business->find($query)->sort(array('stars' => 1));
 
             foreach ($result as $r) {
-              echo "<div class='panel panel-default' id='table'>";
-              echo "<table class='table table-bordered'>";
-              echo "<thead class='thead-inverse'><tr><th colspan='2'>".$r['name']."</th></tr></thead>";
-              echo "<tbody><tr><td>Business Address</td><td><br/><strong>".$r['full_address']."</strong></td></tr>";
-              echo "<tr><td align='justify'>Star Rating</td><td><br/><strong>".$r['stars']."</strong></td></tr>";
-              echo "</tbody></table></div>";
+?>
+                <div class='panel panel-default'>
+                  <table class='table table-bordered'>
+                    <thead class='thead-inverse'>
+                      <tr>
+                        <th colspan='2'><?php echo $r['name'] ?></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Business Address</td>
+                        <td><br/>
+                          <strong><?php echo $r['full_address'] ?></strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align='justify'>Star Rating</td>
+                        <td><br/>
+                          <strong><?php echo $r['stars'] ?></strong>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+<?php
             }
           } else if (!empty($_GET['city'])) {
             $cityName = $_GET['city'];
@@ -73,19 +115,41 @@
             $result = $db->business->find($query)->sort(array('stars' => 1));
 
             foreach ($result as $r) {
-              echo "<div class='panel panel-default' id='table'>";
-              echo "<table class='table table-bordered'>";
-              echo "<thead class='thead-inverse'><tr><th colspan='2'>".$r['name']."</th></tr></thead>";
-              echo "<tbody><tr><td>Business Address</td><td><br/><strong>".$r['full_address']."</strong></td></tr>";
-              echo "<tr><td align='justify'>Star Rating</td><td><br/><strong>".$r['stars']."</strong></td></tr>";
-              echo "</tbody></table></div>";
-        ?>
-              <script type="text/javascript">
-                $(document)>ready(function() {});
-        <?php
+?>
+              <div class="col-md-12" id="results">
+                <div class='panel panel-default'>
+                  <table class='table table-bordered'>
+                    <thead class='thead-inverse'>
+                      <tr>
+                        <th colspan='2'><?php echo $r['name'] ?></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Business Address</td>
+                        <td><br/>
+                          <strong><?php echo $r['full_address'] ?></strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align='justify'>Star Rating</td>
+                        <td><br/>
+                          <strong><?php echo $r['stars'] ?></strong>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+<?php
             }
           }
-        ?>
+?>
+      </div>
+      <div class="col-6-md" id="results">
+<?php
+        //put in the google maps code here
+?>
       </div>
     </div>
   </div>
