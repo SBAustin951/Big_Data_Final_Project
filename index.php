@@ -1,15 +1,12 @@
 <?php
+  $dbhost = 'localhost';
+  $dbname = 'yelp';
 
-  if (isset($_GET['submit'])) {
-    $dbhost = 'localhost';
-    $dbname = 'yelp';
-
-    $m = new MongoClient();
-    //echo "Connected to Mongo successfully";
-    $db = $m->$dbname;
-    //echo "Database $dbname selected <br/>";
-  }
-?>
+  $m = new MongoClient();
+  //echo "Connected to Mongo successfully";
+  $db = $m->$dbname;
+  //echo "Database $dbname selected <br/>";
+ ?>
 
 <html>
 <head>
