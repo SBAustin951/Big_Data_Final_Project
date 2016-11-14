@@ -13,22 +13,40 @@
   <title>My Website</title>
   <link href="css/style.css" rel="stylesheet" />
 
+
   <!-- import bootsrap -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script href="js/bootstrap.min.js"></script>
 
   <!-- import gmaps -->
   <script type="text/javascript" src="js/gmaps.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDAzxePfRURHOZ9FJgI1EHqWs_r3s_ypVo"></script>
+  <script type="text/javascript">
+	
+	$(document).ready(function(){
+		<?php
+			$lat= 51.5073346;
+			$lng= -0.1276831
+		?>
+		var map= new GMaps({
+			div: '#map',
+		<?php
+			echo "lat: ".$lat.",\n";
+			echo "lng: ".$lng.",\n";
+		?>
+		});
+	});
+		</script>
 </head>
 <body>
   <div class="row">
     <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
-      <div class="col-md-8">
-        <a class="navbar-brand" href="index.html" id="cname">Company Name</a>
+      <div class="col-md-7">
+        <a class="navbar-brand" href="index.html" id="cname">J.A.C. Reviews</a>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <form method="get" class="form-inline" id="search">
           <input type="text" placeholder="Keyword" name="key" class="form-control" />
           <input type="text" placeholder="City Name" name="city" class="form-control" />
@@ -113,7 +131,6 @@
 
             foreach ($result as $r) {
 ?>
-              <div class="col-md-12" id="results">
                 <div class='panel panel-default'>
                   <table class='table table-bordered'>
                     <thead class='thead-inverse'>
@@ -143,10 +160,10 @@
           }
 ?>
       </div>
-      <div class="col-6-md" id="results">
-<?php
-        //put in the google maps code here
-?>
+      <div class="col-md-6" id="map_container">
+		<h2 id="map_header"><?php echo $_GET['key']." in ".$_GET['city']; ?></h2>
+		<div id="map">
+		</div>
       </div>
     </div>
   </div>
