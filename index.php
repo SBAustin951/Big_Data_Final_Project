@@ -80,11 +80,11 @@
 	});
   </script>
 </head>
-<body style="background-color: #6495ED">
+<body style="background-image:url(http://cdn.paper4pc.com/images/bubbles-wallpaper-5.jpg)">
   <div class="row">
-    <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.php" id="cname">J.A.C. Reviews</a>
+    <nav class="navbar navbar-fixed-top navbar-custom">
       <div class="col-md-6">
+        <a class="navbar-brand" href="index.php" id="cname"><font color="white" >J.A.C. Reviews</font></a>
       </div>
       <div class="col-md-6">
         <form method="get" class="form-inline" id="search">
@@ -97,8 +97,8 @@
     </nav>
   </div>
   <div class="row">
-    <div class="container-fluid">
-      <div class="col-md-6" id="results"></div>
+    <div class="container-fluid" style="opacity: .7">
+      <div style="height: 80%; margin-left: 10px; margin-right: 10px" class="col-md-6 jumbotron" style="width: 80%; border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px; opacity: " id="results">
 	  <div class="col-md-6" id="map_container">
 		<h2 id="map_header">
 			<?php
