@@ -20,11 +20,11 @@
   <!-- import gmaps -->
   <script type="text/javascript" src="js/gmaps.js"></script>
 </head>
-<body style="background-color: #6495ED">
+<body style="background-image:url(http://cdn.paper4pc.com/images/bubbles-wallpaper-5.jpg)">
   <div class="row">
-    <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+    <nav class="navbar navbar-fixed-top navbar-custom">
       <div class="col-md-6">
-        <a class="navbar-brand" href="index.php" id="cname">J.A.C. Reviews</a>
+        <a class="navbar-brand" href="index.php" id="cname"><font color="white" >J.A.C. Reviews</font></a>
       </div>
       <div class="col-md-6">
         <form method="get" class="form-inline" id="search">
@@ -37,8 +37,8 @@
     </nav>
   </div>
   <div class="row">
-    <div class="container-fluid">
-      <div class="col-md-6" id="results">
+    <div class="container-fluid" style="opacity: .7">
+      <div style="height: 80%; margin-left: 10px; margin-right: 10px" class="col-md-6 jumbotron" style="width: 80%; border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px; opacity: " id="results">
         <?php
           if (isset($_GET['submit'])) {
             if (empty($_GET['key']) && empty($_GET['city']) && empty($_GET['stars'])) {
@@ -53,7 +53,7 @@
               foreach ($result as $r) {
                 echo "<div class='panel panel-default'>";
                 echo "<table class='table table-bordered'>";
-                echo "<thead class='thead-inverse'>";
+                echo "<thead class='thead-inverse well'>";
                 echo "<tr><th colspan='2'>".$r['name']."</th></tr></thead>";
                 echo "<tbody><tr><td>Business Address</td>";
                 echo "<td><br/><strong>".$r['full_address']."</strong></td></tr>";
@@ -61,7 +61,9 @@
                 echo "<td><br/><strong>".$r['stars']."</strong></td></tr>";
                 echo "<tr><td align='justify'>Link:</td>";
                 echo "<td><br/><strong><a href='https://twitter.com/search?q=".$keyWord."'>https://twitter.com/search?q=".$keyWord."</a></strong></td>";
-                echo "</tr></tbody></table></div>";
+                echo "</tr><tr><td align='justify'>Reviews</td>";
+                echo "<td><br/><form method='post'><button type='submit' name='view-reviews' class='form-control btn btn-success'>View Reviews</button></form>";
+                echo "</td></tr></tbody></table></div>";
               }
             }
           }
