@@ -33,22 +33,22 @@
               $query= array('name' => new MongoRegex("/$keyWord/i"), 'city' => new MongoRegex("/$cityName/i"), 'stars' => array('$gte' => (float)$rating));
               $result= $db->business->find($query)->sort(array('stars' => 1));
 
-			  echo "$('#results').html(\"";
+			  $list= "";
 			  foreach($result as $r){
 				$address= str_replace(array("\r","\n"), " ", $r['full_address']);
-                echo "<div class='panel panel-default'>";
-					echo "<table class='table table-bordered'>";
-					echo "<thead class='thead-inverse'>";
-					echo "<tr><th class='well' colspan='2'>".$r['name']."</th></tr></thead>";
-					echo "<tbody><tr><td>Business Address</td>";
-					echo "<td><br/><strong>".$address."</strong></td></tr>";
-					echo "<tr><td align='justify'>Star Rating</td>";
-					echo "<td><br/><strong>".$r['stars']."</strong></td></tr>";
-					echo "<tr><td align='justify'>Link:</td>";
-					echo "<td><br/><strong><a href='https://twitter.com/search?q=".$keyWord."'>https://twitter.com/search?q=".$keyWord."</a></strong></td>";
-                echo "</tr></tbody></table></div>";
+                $list.= "<div class='panel panel-default'>";
+					$list.= "<table class='table table-bordered'>";
+					$list.= "<thead class='thead-inverse'>";
+					$list.= "<tr><th class='well' colspan='2'>".$r['name']."</th></tr></thead>";
+					$list.= "<tbody><tr><td>Business Address</td>";
+					$list.= "<td><br/><strong>".$address."</strong></td></tr>";
+					$list.= "<tr><td align='justify'>Star Rating</td>";
+					$list.= "<td><br/><strong>".$r['stars']."</strong></td></tr>";
+					$list.= "<tr><td align='justify'>Link:</td>";
+					$list.= "<td><br/><strong><a href='https://twitter.com/search?q=".$keyWord."'>https://twitter.com/search?q=".$keyWord."</a></strong></td>";
+                $list.= "</tr></tbody></table></div>";
               }
-			  echo "\");";
+			  echo "$('#results').html(\"".$list."\");\n";
             }
 		}
 			$lat= 51.5073346;
@@ -98,7 +98,7 @@
   </div>
   <div class="row">
     <div class="container-fluid" style="opacity: .7">
-      <div style="height: 80%; margin-left: 10px; margin-right: 10px" class="col-md-6 jumbotron" style="width: 80%; border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px; opacity: " id="results">
+      <div style="height: 80%; padding-left: 10px; padding-right: 10px" class="col-md-6 jumbotron" style="width: 80%; border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px; opacity: " id="results"></div>
 	  <div class="col-md-6" id="map_container">
 		<h2 id="map_header">
 			<?php
@@ -107,6 +107,7 @@
 			?>
 		</h2>
 		<div id="map"></div>
+	  </div>
     </div>
   </div>
 </body>
