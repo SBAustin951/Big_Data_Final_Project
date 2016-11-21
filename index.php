@@ -56,7 +56,7 @@
 
 					$list= "";
 					foreach($result as $r){
-						$address= str_replace(array("\r","\n"), " ", $r['full_address']);
+						$address= addslashes(str_replace(array("\r","\n"), " ", $r['full_address']));
 						
 						$list.= "<div class='panel panel-default'>";
 						$list.= "<table class='table table-bordered'>";
@@ -73,9 +73,9 @@
 						map.addMarker({
 							lat: <?php echo $r['latitude'] ?>,
 							lng: <?php echo $r['longitude'] ?>,
-							title: '<?php echo $r['name'] ?>',
+							title: '<?php echo addslashes($r['name']) ?>',
 							infoWindow:{
-								content: '<p><?php echo $r['name'] ?><br><?php echo $r['stars'] ?> Stars<br><?php echo $address ?></p>'
+								content: '<p><?php echo addslashes($r['name']) ?><br><?php echo $r['stars'] ?> Stars<br><?php echo $address ?></p>'
 							}
 						});
 					<?php
