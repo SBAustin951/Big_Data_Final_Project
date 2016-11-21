@@ -35,7 +35,7 @@
 						$url= 'http://maps.googleapis.com/maps/api/geocode/json?address='.$address.'&sensor=false';
 						$geocode= file_get_contents($url);
 						$results= json_decode($geocode, true);
-			
+
 						if($results['status']=='OK'){
 							$lat= $results['results'][0]['geometry']['location']['lat'];
 							$lng= $results['results'][0]['geometry']['location']['lng'];
@@ -56,8 +56,8 @@
 
 					$list= "";
 					foreach($result as $r){
-						$address= str_replace(array("\r","\n"), " ", $r['full_address']);
-						
+						$address= addslashes (str_replace(array("\r","\n"), " ", $r['full_address']));
+
 						$list.= "<div class='panel panel-default'>";
 						$list.= "<table class='table table-bordered'>";
 						$list.= "<thead class='thead-inverse'>";
@@ -73,9 +73,9 @@
 						map.addMarker({
 							lat: <?php echo $r['latitude'] ?>,
 							lng: <?php echo $r['longitude'] ?>,
-							title: '<?php echo $r['name'] ?>',
+							title: '<?php echo addslashes ($r['name']) ?>',
 							infoWindow:{
-								content: '<p><?php echo $r['name'] ?><br><?php echo $r['stars'] ?> Stars<br><?php echo $address ?></p>'
+								content: '<p><?php echo addslashes ($r['name']) ?><br><?php echo $r['stars'] ?> Stars<br><?php echo $address ?></p>'
 							}
 						});
 					<?php
