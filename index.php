@@ -67,7 +67,7 @@
 						$list.= "<tr><td align='justify'>Star Rating</td>";
 						$list.= "<td><br/><strong>".$r['stars']."</strong></td></tr>";
 						$list.= "<tr><td align='justify'>Link:</td>";
-						$list.= "<td><br/><strong><a href='https://twitter.com/search?q=".$keyWord."'>https://twitter.com/search?q=".$keyWord."</a></strong></td>";
+						$list.= "<td><br/><strong><a href='https://twitter.com/search?q=".addslashes($r['name'])."'>https://twitter.com/search?q=".addslashes($r['name'])."</a></strong></td>";
 						$list.= "</tr></tbody></table></div>";
 					?>
 						map.addMarker({
