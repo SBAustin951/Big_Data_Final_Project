@@ -11,9 +11,11 @@
 <html>
 <head>
   <title>J.A.C. Reviews</title>
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="CSS/style.css" rel="stylesheet" />
   <!-- import bootsrap -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script href="js/bootstrap.min.js"></script>
@@ -21,6 +23,21 @@
   <script type="text/javascript" src="js/gmaps.js"></script>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDAzxePfRURHOZ9FJgI1EHqWs_r3s_ypVo"></script>
   <script type="text/javascript">
+	  $.fn.stars = function() {
+	    return $(this).each(function() {
+	        // Get the value
+	        var val = parseFloat($(this).html());
+	        val = Math.round(val * 2) / 2; /* To round to nearest half */
+	        // Make sure that the value is in 0 - 5 range, multiply to get width
+	        var size = Math.max(0, (Math.min(5, val))) * 16;
+	        // Create stars holder
+	        var $span = $('<span />').width(size);
+	        // Replace the numerical value with stars
+	        $(this).html($span);
+	    });
+	}
+
+
 	$(document).ready(function(){
 		<?php
 			if(isset($_GET['submit'])){
@@ -42,6 +59,9 @@
 						}
 					}
 				?>
+				$(function() {
+    				$('span.stars').stars();
+				});
 					var map= new GMaps({
 						div: '#map',
 						lat: <?php echo $lat ?>,
@@ -58,14 +78,14 @@
 					foreach($result as $r){
 						$address= addslashes(str_replace(array("\r","\n"), " ", $r['full_address']));
 
-						$list.= "<div class='panel panel-default'>";
+						$list.= "<div class='panel panel-primary'>";
 						$list.= "<table class='table table-bordered'>";
 						$list.= "<thead class='thead-inverse'>";
 						$list.= "<tr><th class='well' colspan='2'>".$r['name']."</th></tr></thead>";
 						$list.= "<tbody><tr><td>Business Address</td>";
 						$list.= "<td><br/><strong>".$address."</strong></td></tr>";
 						$list.= "<tr><td align='justify'>Star Rating</td>";
-						$list.= "<td><br/><strong>".$r['stars']."</strong></td></tr>";
+						$list.= "<td><br/><strong><span class='stars'>".$r['stars']."</span></strong></td></tr>";
 						$list.= "<tr><td align='justify'>Link:</td>";
 						$list.= "<td><br/><strong><a href='https://twitter.com/search?q=".addslashes($r['name'])."'>https://twitter.com/search?q=".addslashes($r['name'])."</a></strong></td>";
 						$list.= "</tr></tbody></table></div>";
@@ -87,11 +107,12 @@
 	});
   </script>
 </head>
-<body style="background-image:url(http://paper4pc.com/897404-minimalistic-2.html#gal_post_5809_minimalistic-wallpaper-5.jpg)">
-  <div class="row">
+<body >
+<div class="container">
+  <div class="row transparent">
     <nav class="navbar navbar-fixed-top navbar-custom">
       <div class="col-md-6">
-        <a class="navbar-brand" href="index.php" id="cname"><font color="white" >J.A.C. Reviews</font></a>
+        <a class="navbar-brand" href="index.php" id="cname"><font  >J.A.C.Reviews</font></a>
       </div>
       <div class="col-md-6">
         <form method="get" class="form-inline" id="search">
@@ -104,10 +125,10 @@
     </nav>
   </div>
   <div class="row">
-    <div class="container-fluid" style="opacity: .7">
-      <div style="height: 80%; padding-left: 10px; padding-right: 10px" class="col-md-6 jumbotron" style="width: 80%; border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px; opacity: " id="results"></div>
+    <div class="container-fluid">
+      <div class="col-md-6 jumbotron" style="background-color: black" id="results"></div>
 	  <div class="col-md-6" id="map_container">
-		<h2 id="map_header">
+		<h2 id="map_header" style="font-size: medium ; color: white">
 			<?php
 				if(empty($_GET['key']) && empty($_GET['city']) && empty($_GET['stars'])){}
 				else{ echo $_GET['key']." in ".$_GET['city']." with at least ".$_GET['stars']." stars"; }
@@ -116,6 +137,7 @@
 		<div id="map"></div>
 	  </div>
     </div>
+  </div>
   </div>
 </body>
 </html>
