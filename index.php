@@ -57,7 +57,7 @@
 					$list= "";
 					foreach($result as $r){
 						$address= addslashes(str_replace(array("\r","\n"), " ", $r['full_address']));
-						
+
 						$list.= "<div class='panel panel-default'>";
 						$list.= "<table class='table table-bordered'>";
 						$list.= "<thead class='thead-inverse'>";
@@ -87,7 +87,7 @@
 	});
   </script>
 </head>
-<body style="background-image:url(http://cdn.paper4pc.com/images/bubbles-wallpaper-5.jpg)">
+<body style="background-image:url(http://paper4pc.com/897404-minimalistic-2.html#gal_post_5809_minimalistic-wallpaper-5.jpg)">
   <div class="row">
     <nav class="navbar navbar-fixed-top navbar-custom">
       <div class="col-md-6">
