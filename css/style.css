@@ -7,7 +7,6 @@ body {
   color: white;
   font-size: 3em;
   margin-top: .06em;
-  opacity: 1;
 }
 
 #search {
@@ -20,7 +19,7 @@ body {
 }
 
 #map {
-  height: 77%;
+  height: 82.5%;
 
   border-radius: 10px;
   -moz-border-radius:10px;
@@ -48,12 +47,11 @@ body {
 }
 
 .table{
-  opacity: 1;
   background-color: white;
 }
 
 .jumbotron{
-  height: 80%;
+  height: 85%;
   padding-left: 10px;
   padding-right: 10px;
   width: 80%;
@@ -61,7 +59,6 @@ body {
   border-radius: 10px;
   -moz-border-radius:10px;
   -webkit-border-radius:10px;
-   opacity: .6;
    background-color: black;
 }
 

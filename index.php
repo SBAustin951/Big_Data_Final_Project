@@ -64,8 +64,8 @@
 					});
 					var map= new GMaps({
 						div: '#map',
-						lat: <?php echo $lat ?>,
-						lng: <?php echo $lng ?>,
+						lat: '<?php echo $lat ?>',
+						lng: '<?php echo $lng ?>',
 					});
 				<?php
 					$keyWord= $_GET['key'];
@@ -81,19 +81,17 @@
 						$list.= "<div class='panel panel-primary'>";
 						$list.= "<table class='table table-bordered'>";
 						$list.= "<thead class='thead-inverse'>";
-						$list.= "<tr><th class='well' colspan='2'>".$r['name']."</th></tr></thead>";
+						$list.= "<tr><th class='well' colspan='2'>".$r['name']." <a href='https://twitter.com/search?q=".addslashes($r['name'])."'><img src='data/twitter.png' style='width:25px;height:25px' /></a>";
+            $list.= " <strong><a href='extra.php?name=".urlencode($r['name'])."&address=".urlencode($address)."&id=".$r['business_id']."'><button class='btn btn-info'>Streetview</button></a></strong></th></tr></thead>";
 						$list.= "<tbody><tr><td>Business Address</td>";
 						$list.= "<td><br/><strong>".$address."</strong></td></tr>";
 						$list.= "<tr><td align='justify'>Star Rating</td>";
 						$list.= "<td><br/><strong><span class='stars'>".$r['stars']."</span></strong></td></tr>";
-						$list.= "<tr><td align='justify'>Links:</td>";
-						$list.= "<td><strong><a href='https://twitter.com/search?q=".addslashes($r['name'])."'>Tweets</a></strong>";
-						$list.= "<br/><strong><a href='extra.php?name=".urlencode($r['name'])."&address=".urlencode($address)."&id=".$r['business_id']."'>Streetview</a></strong></td>";
-						$list.= "</tr></tbody></table></div>";
+						$list.= "</tbody></table></div>";
 					?>
 						map.addMarker({
-							lat: <?php echo $r['latitude'] ?>,
-							lng: <?php echo $r['longitude'] ?>,
+							lat: '<?php echo $r['latitude'] ?>',
+							lng: '<?php echo $r['longitude'] ?>',
 							title: '<?php echo addslashes($r['name']) ?>',
 							infoWindow:{
 								content: '<p><?php echo addslashes($r['name']) ?><br><?php echo $r['stars'] ?> Stars<br><?php echo $address ?></p>'
@@ -109,7 +107,7 @@
   </script>
 </head>
 <body >
-<div class="container">
+<div class="container-fluid">
   <div class="row transparent">
     <nav class="navbar navbar-fixed-top navbar-custom">
       <div class="col-md-6">
@@ -127,7 +125,7 @@
   </div>
   <div class="row">
     <div class="container-fluid">
-      <div class="col-md-6 jumbotron" style="background-color: black" id="results"></div>
+      <div class="col-md-6 jumbotron" style="background: rgba(0,0,0,0.6)" id="results"></div>
 	  <div class="col-md-6" id="map_container">
 		<h2 id="map_header" style="font-size: medium ; color: white">
 			<?php
