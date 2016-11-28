@@ -43,10 +43,6 @@
 					lat: '<?php echo $lat ?>',
 					lng: '<?php echo $lng ?>',
 				});
-				<?php
-
-					//echo "$('#reviews').html(\"".$list."\");\n";
-				?>
 			});
 		</script>
 	</head>
