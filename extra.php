@@ -19,14 +19,14 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script href="js/bootstrap.min.js"></script>
-	
+
 		<script type="text/javascript" src="js/gmaps.js"></script>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDAzxePfRURHOZ9FJgI1EHqWs_r3s_ypVo"></script>
 		<script type="text/javascript">
 			<?php
 				$lat= 0;
 				$lng= 0;
-				
+
 				$address= urlencode($_GET['address']);
 				$url= 'http://maps.googleapis.com/maps/api/geocode/json?address='.$address.'&sensor=false';
 				$geocode= file_get_contents($url);
@@ -40,31 +40,31 @@
 			$(document).ready(function(){
 				var streetView= GMaps.createPanorama({
 					el: '#streetview',
-					lat: <?php echo $lat ?>,
-					lng: <?php echo $lng ?>,
+					lat: '<?php echo $lat ?>',
+					lng: '<?php echo $lng ?>',
 				});
 				<?php
 					$list= "";
-				
-					$query= array('business_id' => $_GET['id']);
-					// $result= $db->review->find($query);
-					
-					
-					// foreach($result as $r){
+
+          $bid = $_GET['id'];
+					$query= array('business_id' => new MongoRegex("/$bid/"));
+					$result= $db->review->find($query);
+
+
+					foreach($result as $r){
 						// $user= "";
 						// $uQuery= array('user_id' => $r['user_id']);
 						// $userSet= $db->user->find($uQuery);
 						// foreach(userSet as $u){ $user= $u['name']; }
-						
-						// $list.= "<div class='panel panel-primary'>";
-						// $list.= "<table class='table table-bordered'>";
-						// $list.= "<thead class='thead-inverse'>";
-						// $list.= "<tr><th class='well' colspan='2'>".$user."</th></tr></thead>";
-						// $list.= "<tbody><tr><td>".$r['text']."</td></tr></table></div>";
-						// $list.= $r['text']."<br/>";
-					// }
-					
-					// echo "$('#reviews').html(\"".$list."\");\n";
+
+						$list.= "<div class='panel panel-primary'>";
+						$list.= "<table class='table table-bordered'>";
+						$list.= "<thead class='thead-inverse'>";
+						$list.= "<tr><th class='well' colspan='2'>".$r['stars']."</th></tr></thead>";
+						$list.= "<tbody><tr><td>".$r['text']."</td></tr></table></div>";
+					}
+
+					echo "$('#reviews').html(\"".$list."\");\n";
 				?>
 			});
 		</script>

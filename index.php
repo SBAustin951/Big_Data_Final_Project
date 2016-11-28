@@ -82,7 +82,7 @@
 						$list.= "<table class='table table-bordered'>";
 						$list.= "<thead class='thead-inverse'>";
 						$list.= "<tr><th class='well' colspan='2'>".$r['name']." <a href='https://twitter.com/search?q=".addslashes($r['name'])."'><img src='data/twitter.png' style='width:25px;height:25px' /></a>";
-            $list.= " <strong><a href='extra.php?name=".urlencode($r['name'])."&address=".urlencode($address)."&id=".$r['business_id']."'><button class='btn btn-info'>Streetview</button></a></strong></th></tr></thead>";
+            $list.= " <strong><a href='extra.php?name=".urlencode($r['name'])."&address=".urlencode($address)."&id=".urlencode($r['business_id'])."'><button class='btn btn-info'>Streetview</button></a></strong></th></tr></thead>";
 						$list.= "<tbody><tr><td>Business Address</td>";
 						$list.= "<td><br/><strong>".$address."</strong></td></tr>";
 						$list.= "<tr><td align='justify'>Star Rating</td>";
