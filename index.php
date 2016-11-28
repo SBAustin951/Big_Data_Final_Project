@@ -11,7 +11,7 @@
 <html>
 <head>
   <title>J.A.C. Reviews</title>
-  <link href="CSS/style.css" rel="stylesheet" />
+  <link href="CSS/style.css" rel="stylesheet"/>
   <!-- import bootsrap -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
@@ -59,9 +59,9 @@
 						}
 					}
 				?>
-				$(function() {
-    				$('span.stars').stars();
-				});
+					$(function() {
+						$('span.stars').stars();
+					});
 					var map= new GMaps({
 						div: '#map',
 						lat: <?php echo $lat ?>,
@@ -86,8 +86,9 @@
 						$list.= "<td><br/><strong>".$address."</strong></td></tr>";
 						$list.= "<tr><td align='justify'>Star Rating</td>";
 						$list.= "<td><br/><strong><span class='stars'>".$r['stars']."</span></strong></td></tr>";
-						$list.= "<tr><td align='justify'>Link:</td>";
-						$list.= "<td><br/><strong><a href='https://twitter.com/search?q=".addslashes($r['name'])."'>https://twitter.com/search?q=".addslashes($r['name'])."</a></strong></td>";
+						$list.= "<tr><td align='justify'>Links:</td>";
+						$list.= "<td><strong><a href='https://twitter.com/search?q=".addslashes($r['name'])."'>Tweets</a></strong>";
+						$list.= "<br/><strong><a href='extra.php?name=".urlencode($r['name'])."&address=".urlencode($address)."'>Streetview</a></strong></td>";
 						$list.= "</tr></tbody></table></div>";
 					?>
 						map.addMarker({
@@ -112,7 +113,7 @@
   <div class="row transparent">
     <nav class="navbar navbar-fixed-top navbar-custom">
       <div class="col-md-6">
-        <a class="navbar-brand" href="index.php" id="cname"><font  >J.A.C.Reviews</font></a>
+        <a class="navbar-brand" href="index.php" id="cname"><font>J.A.C.Reviews</font></a>
       </div>
       <div class="col-md-6">
         <form method="get" class="form-inline" id="search">
