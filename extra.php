@@ -38,11 +38,34 @@
 				}
 			?>
 			$(document).ready(function(){
-				var streetView1= GMaps.createPanorama({
+				var streetView= GMaps.createPanorama({
 					el: '#streetview',
 					lat: <?php echo $lat ?>,
 					lng: <?php echo $lng ?>,
 				});
+				<?php
+					$list= "";
+				
+					$query= array('business_id' => $_GET['id']);
+					// $result= $db->review->find($query);
+					
+					
+					// foreach($result as $r){
+						// $user= "";
+						// $uQuery= array('user_id' => $r['user_id']);
+						// $userSet= $db->user->find($uQuery);
+						// foreach(userSet as $u){ $user= $u['name']; }
+						
+						// $list.= "<div class='panel panel-primary'>";
+						// $list.= "<table class='table table-bordered'>";
+						// $list.= "<thead class='thead-inverse'>";
+						// $list.= "<tr><th class='well' colspan='2'>".$user."</th></tr></thead>";
+						// $list.= "<tbody><tr><td>".$r['text']."</td></tr></table></div>";
+						// $list.= $r['text']."<br/>";
+					// }
+					
+					// echo "$('#reviews').html(\"".$list."\");\n";
+				?>
 			});
 		</script>
 	</head>

@@ -71,7 +71,7 @@
 					$keyWord= $_GET['key'];
 					$cityName= $_GET['city'];
 					$rating= $_GET['stars'];
-					$query= array('name' => new MongoRegex("/$keyWord/i"), 'city' => new MongoRegex("/$cityName/i"), 	'stars' => array('$gte' => (float)$rating));
+					$query= array('name' => new MongoRegex("/$keyWord/i"), 'city' => new MongoRegex("/$cityName/i"), 'stars' => array('$gte' => (float)$rating));
 					$result= $db->business->find($query)->sort(array('stars' => 1));
 
 					$list= "";
@@ -88,7 +88,7 @@
 						$list.= "<td><br/><strong><span class='stars'>".$r['stars']."</span></strong></td></tr>";
 						$list.= "<tr><td align='justify'>Links:</td>";
 						$list.= "<td><strong><a href='https://twitter.com/search?q=".addslashes($r['name'])."'>Tweets</a></strong>";
-						$list.= "<br/><strong><a href='extra.php?name=".urlencode($r['name'])."&address=".urlencode($address)."'>Streetview</a></strong></td>";
+						$list.= "<br/><strong><a href='extra.php?name=".urlencode($r['name'])."&address=".urlencode($address)."&id=".$r['business_id']."'>Streetview</a></strong></td>";
 						$list.= "</tr></tbody></table></div>";
 					?>
 						map.addMarker({
