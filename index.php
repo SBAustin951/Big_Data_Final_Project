@@ -5,7 +5,8 @@
   $m = new MongoClient();
   //echo "Connected to Mongo successfully";
   $db = $m->$dbname;
-  //echo "Database $dbname selected <br
+  //echo "Database $dbname selected <br/>";
+  // Making a simple ch
 ?>
 
 <html>
