@@ -6,6 +6,7 @@
   //echo "Connected to Mongo successfully";
   $db = $m->$dbname;
   //echo "Database $dbname selected <br/>";
+  // Making a simple change so that I can test git clone
 ?>
 
 <html>
